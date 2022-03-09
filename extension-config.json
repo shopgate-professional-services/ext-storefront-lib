@@ -1,0 +1,19 @@
+{
+  "id": "@shopgate-project/storefront-lib",
+  "version": "1.0.0-beta.1",
+  "components": [
+    {
+      "id": "Subscribers",
+      "path": "frontend/subscriptions.js",
+      "type": "subscribers"
+    },
+    {
+      "id": "Pdp",
+      "path": "frontend/portals/Pdp",
+      "target": "product.description.before",
+      "type": "portals"
+    }
+  ],
+  "configuration": {
+  }
+}
