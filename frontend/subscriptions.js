@@ -1,11 +1,7 @@
-import { css } from 'glamor';
-import { appDidStart$, logger, routeDidEnter$ } from '@shopgate/engage/core';
-import { userDataReceived$, userDidLogout$ } from '@shopgate/engage/user';
-import { makeGetRoutePattern } from '@shopgate/pwa-common/selectors/router';
-import UIEvents from '@shopgate/pwa-core/emitters/ui';
-import { SHEET_EVENTS } from '@shopgate/pwa-ui-shared/Sheet';
-import { sdkUrl, pagesWithoutWidget } from './config';
-import { getUserData } from './selectors';
+import { appDidStart$ } from '@shopgate/engage/core';
+import { productIsReady$ } from '@shopgate/pwa-tracking/streams/product';
+import { variantDidChange$ } from '@shopgate/pwa-common-commerce/product/streams';
+import getRetailred from './retailRedStorefront';
 
 export default (subscribe) => {
   subscribe(appDidStart$, ({ getState }) => {
@@ -16,5 +12,28 @@ export default (subscribe) => {
     const parent = document.getElementsByTagName('head')[0];
     parent.appendChild(script);
   });
+
+  // TODO: set user data if already logged in
+  // TODO: call updateConfig() if user did login/logout
+  // TODO: disable if product is not orderable
+
+  subscribe(productIsReady$, ({ getState }) => {
+
+    getRetailred().updateConfig({
+      product: {}, // TODO: pass data here
+    });
+  });
+
+  subscribe(variantDidChange$, ({ getState, action }) => {
+    const state = getState();
+    const { id: productId } = action.productData;
+    const props = { productId };
+
+    getRetailred().updateConfig({
+      product: {}, // TODO: pass data here
+    });
+
+  });
+
 };
 

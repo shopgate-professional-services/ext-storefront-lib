@@ -15,5 +15,33 @@
     }
   ],
   "configuration": {
+    "config": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "apiKey": null,
+        "apiStage": "production",
+        "useGeolocationImmediately": true,
+        "saveCustomerData": "on",
+        "browserHistory": true,
+        "unitSystem": "metric",
+        "countries": ["de"],
+        "translations": {},
+        "inventory": {
+          "hideNumber": false,
+          "showExactUntil": null,
+          "showLowUntil": 5
+        },
+        "termsLink": null,
+        "privacyLink": null,
+        "displayType": "reserveButton",
+        "renderLiveInventoryMode": "modal"
+
+      },
+      "params": {
+        "label": "",
+        "type": "json"
+      }
+    }
   }
 }
