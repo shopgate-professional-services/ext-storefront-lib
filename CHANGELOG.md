@@ -7,5 +7,5 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [1.0.0]
 ### Added
-- Initial release
+- Initial release - Adds the Storefront library to the PDP
 

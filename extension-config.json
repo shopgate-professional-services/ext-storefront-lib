@@ -8,8 +8,8 @@
       "type": "subscribers"
     },
     {
-      "id": "Pdp",
-      "path": "frontend/portals/Pdp",
+      "id": "ClickReserveButton",
+      "path": "frontend/components/ClickReserveButton",
       "target": "product.description.before",
       "type": "portals"
     }
@@ -25,21 +25,21 @@
         "saveCustomerData": "on",
         "browserHistory": true,
         "unitSystem": "metric",
-        "countries": ["de"],
-        "translations": {},
+        "localization": {},
         "inventory": {
           "hideNumber": false,
           "showExactUntil": null,
           "showLowUntil": 5
         },
-        "termsLink": null,
-        "privacyLink": null,
-        "displayType": "reserveButton",
-        "renderLiveInventoryMode": "modal"
-
+        "productCode": "",
+        "termsLink": "",
+        "privacyLink": "",
+        "renderLiveInventory": false,
+        "renderLiveInventoryMode": "list",
+        "newsletterOptIn": "disabled"
       },
       "params": {
-        "label": "",
+        "label": "Storefront configuration",
         "type": "json"
       }
     }
