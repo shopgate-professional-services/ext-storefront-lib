@@ -1,13 +1,13 @@
 import { appDidStart$ } from '@shopgate/engage/core';
-import { productIsReady$ } from '../../../libraries/tracking/streams/product';
 import { variantDidChange$ } from '@shopgate/pwa-common-commerce/product/streams';
 import {
   userDataReceived$,
   userDidLogout$,
-  getUserData
+  getUserData,
 } from '@shopgate/engage/user';
-import { getProductFormatted } from './selectors';
-import getRetailred from './retailRedStorefront';
+import { getProductFormated } from './selectors';
+import { productIsReady$ } from '../../../libraries/tracking/streams/product';
+import getRetailRed from './retailRedStorefront';
 
 export default (subscribe) => {
   // Include storefront library
@@ -26,14 +26,14 @@ export default (subscribe) => {
     const userData = getUserData(state);
 
     const user = userData ? {
-        code: null,
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-        phone: userData.phone,
-        emailAddress: userData.mail
-      } : {}
+      code: null,
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      phone: userData.phone,
+      emailAddress: userData.mail,
+    } : {};
 
-    getRetailred().updateConfig({
+    getRetailRed().updateConfig({
       customer: user,
     });
   });
@@ -45,9 +45,9 @@ export default (subscribe) => {
       firstName: '',
       lastName: '',
       phone: '',
-      emailAddress: ''
-    }
-    getRetailred().updateConfig({
+      emailAddress: '',
+    };
+    getRetailRed().updateConfig({
       customer: user,
     });
   });
@@ -58,11 +58,12 @@ export default (subscribe) => {
     const {
       id: productId,
     } = action.productData;
+
     const props = { productId };
 
-    const formatedProduct = getProductFormatted(state, props)
+    const formatedProduct = getProductFormated(state, props);
 
-    getRetailred().updateConfig({
+    getRetailRed().updateConfig({
       product: formatedProduct,
     });
   });
@@ -75,11 +76,10 @@ export default (subscribe) => {
     } = action.productData;
     const props = { productId };
 
-    const formatedProduct = getProductFormatted(state, props)
+    const formatedProduct = getProductFormated(state, props);
 
-    getRetailred().updateConfig({
-      product: formatedProduct
+    getRetailRed().updateConfig({
+      product: formatedProduct,
     });
   });
-
 };

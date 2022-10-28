@@ -9,12 +9,12 @@ const { config } = getConfig();
 
 /**
  * Checks if all selections have been made.
- * @param {Object} variants 
- * @param {Object} props 
+ * @param {Object} variants The data of the received product variants.
+ * @param {Object} props The component props.
  * @returns {boolean}
  */
 const checkSelection = (variants, props) => {
-  const { characteristics } = variants
+  const { characteristics } = variants;
   const { variantId } = props;
 
   if (characteristics) {
@@ -23,10 +23,11 @@ const checkSelection = (variants, props) => {
   }
 
   return false;
-}
+};
 
 /**
  * ClickReserveButton component
+ * @returns {JSX}
  */
 const ClickReserveButton = ({ isOrderable, variants, ...props }) => {
   useEffect(() => {
@@ -38,8 +39,9 @@ const ClickReserveButton = ({ isOrderable, variants, ...props }) => {
     }
   }, []);
 
-  // Orderable and variant selection made
-  const isReservable = Object.keys(variants).length > 0 ? (isOrderable && checkSelection(variants, props)) : isOrderable;
+  // Orderable and variant selection is made
+  const isReservable = Object.keys(variants).length > 0 ?
+    (isOrderable && checkSelection(variants, props)) : isOrderable;
 
   return (
     (isReservable) ? (
@@ -48,9 +50,11 @@ const ClickReserveButton = ({ isOrderable, variants, ...props }) => {
           <div id="rr-dropin" />
         </div>
       </div>
-      ) : (
+    ) : (
       <div className={styles.container}>
-        <div className={config.renderLiveInventory ? styles.selectStoreInactive : styles.reserveButtonInactive}>
+        <div className={config.renderLiveInventory ?
+          styles.selectStoreInactive : styles.reserveButtonInactive}
+        >
           <div id="rr-dropin" />
         </div>
       </div>
@@ -59,7 +63,7 @@ const ClickReserveButton = ({ isOrderable, variants, ...props }) => {
 };
 
 ClickReserveButton.propTypes = {
-  variants: PropTypes.object.isRequired,
+  variants: PropTypes.shape({}).isRequired,
   isOrderable: PropTypes.bool,
 };
 

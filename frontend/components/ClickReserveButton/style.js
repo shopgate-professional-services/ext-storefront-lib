@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import {
   themeConfig,
-  themeName
+  themeName,
 } from '@shopgate/pwa-common/helpers/config';
 
 const isIOS = themeName.includes('ios');
@@ -24,7 +24,7 @@ css.global('#rr-omni #rr-omni-custom .rr-button', {
   textTransform: 'none',
   fontSize: '16px',
   fontWeight: 700,
-  borderRadius: borderRadius,
+  borderRadius,
   width: '100%',
   padding: '11px 9.6px 13px',
   height: 'inherit',
@@ -50,7 +50,7 @@ css.global('#rr-dropin #rr-inventory-custom #rr-inventory #rr-inventory-reserve'
   width: '100%',
   height: '47px',
   lineHeight: 'inherit',
-  borderRadius: borderRadius,
+  borderRadius,
 });
 
 css.global('#rr-dropin #rr-inventory-custom #rr-inventory .rr-inventory-postalsearch .rr-button' , {
@@ -60,7 +60,7 @@ css.global('#rr-dropin #rr-inventory-custom #rr-inventory .rr-inventory-postalse
   width: '100%',
   height: '38px',
   lineHeight: 'inherit',
-  borderRadius: borderRadius,
+  borderRadius,
   marginTop: '2px',
 });
 
@@ -71,15 +71,15 @@ css.global('#rr-dropin #rr-omni-reserve-button', {
   width: '100%',
   height: '47px',
   lineHeight: 'inherit',
-  borderRadius: borderRadius,
+  borderRadius,
 });
 
 css.global('#rr-dropin #rr-inventory-custom fieldset', {
-  borderRadius: borderRadius,
+  borderRadius,
 });
 
 css.global('#rr-omni.rr-omni-int .rr-text-field fieldset', {
-  borderRadius: borderRadius,
+  borderRadius,
 });
 
 const container = css(isIOS ? {
@@ -103,7 +103,7 @@ const reserveButtonInactive = css({
   ' #rr-omni-reserve-button': {
     pointerEvents: 'none',
     background: themeConfig.colors.shade5,
-  }
+  },
 }).toString();
 
 export default {

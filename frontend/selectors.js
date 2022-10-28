@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getProduct } from '@shopgate/engage/product'
+import { getProduct } from '@shopgate/engage/product';
 import { formatProductData } from './helpers/formatProductData';
 
 /**
@@ -7,7 +7,7 @@ import { formatProductData } from './helpers/formatProductData';
  * @param {Object} state The current state.
  * @returns {Object} The formatted selected variant.
  */
-export const getProductFormatted = createSelector(
+export const getProductFormated = createSelector(
   getProduct,
   formatProductData
 );

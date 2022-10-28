@@ -1,33 +1,48 @@
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import getConfig from './helpers/getConfig';
 
 const { config } = getConfig();
+const { language } = appConfig;
 
-let retailred;
+// get language code from PWA
+const languageCode = language.split('-')[0];
+
+let retailRed;
 
 export default () => {
-  if (retailred) {
-    return retailred;
+  if (retailRed) {
+    return retailRed;
   }
 
-  retailred = window.RetailRedStorefront.create({
+  retailRed = window.RetailRedStorefront.create({
     apiKey: config.apiKey,
     apiStage: config.apiStage,
     unitSystem: config.unitSystem,
     useGeolocationImmediately: config.useGeolocationImmediately,
     saveCustomerData: config.saveCustomerData,
-    browserHistory: config.browserHistory,
+    browserHistory: false,
     inventory: {
       hideNumber: config.inventoryHideNumber,
       showExactUntil: config.inventoryShowExactUntil,
       showLowUntil: config.inventoryShowLowUntil,
     },
-    localization: config.localization,
+    localization: {
+      countries: config.localization.countries,
+      localeCode: languageCode,
+      en: config.localization.en,
+      de: config.localization.de,
+      es: config.localization.es,
+      fr: config.localization.fr,
+      it: config.localization.it,
+      nl: config.localization.nl,
+      pt: config.localization.pt,
+    },
     legal: {
       terms: config.termsLink,
       privacy: config.privacyLink,
     },
     newsletterOptIn: config.newsletterOptIn,
-    platform: "engage"
+    platform: 'engage',
   });
-  return retailred;
+  return retailRed;
 };

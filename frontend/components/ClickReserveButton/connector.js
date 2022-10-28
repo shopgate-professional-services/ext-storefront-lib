@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import {
   isProductOrderable,
-  getProductVariants
-} from '@shopgate/engage/product'
+  getProductVariants,
+} from '@shopgate/engage/product';
 
 /**
  * Maps the contents of the state to the component props.
@@ -13,7 +13,7 @@ import {
 const mapStateToProps = (state, props) => {
   const variants = getProductVariants(state, props);
   return {
-    variants: variants ? variants : {},
+    variants: variants || {},
     isOrderable: isProductOrderable(state, props),
   };
 };

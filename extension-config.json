@@ -19,21 +19,29 @@
       "type": "admin",
       "destination": "frontend",
       "default": {
-        "apiKey": null,
-        "apiStage": "production",
+        "apiKey": "pEzhhu8vEqpH5r9w3atEcRY5",
+        "apiStage": "staging",
         "useGeolocationImmediately": true,
         "saveCustomerData": "on",
-        "browserHistory": true,
         "unitSystem": "metric",
-        "localization": {},
+        "localization": {
+          "countries": ["de"],
+          "de": null,
+          "en": null,
+          "es": null,
+          "fr": null,
+          "it": null,
+          "nl": null,
+          "pt": null
+        },
         "inventory": {
           "hideNumber": false,
           "showExactUntil": null,
           "showLowUntil": 5
         },
-        "productCode": "",
-        "termsLink": "",
-        "privacyLink": "",
+        "productCodeIdentifierMapping": null,
+        "termsLink": null,
+        "privacyLink": null,
         "renderLiveInventory": false,
         "renderLiveInventoryMode": "list",
         "newsletterOptIn": "disabled"

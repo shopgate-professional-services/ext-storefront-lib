@@ -8,47 +8,44 @@ const { config } = getConfig();
  * @returns {Object|null} The formatted product.
  */
 export const formatProductData = (productData) => {
-    if (!productData) {
-        return null;
-    }
+  if (!productData) {
+    return null;
+  }
 
-    const { 
-        id,
-        name,
-        price,
-        identifiers,
-        featuredImageUrl,
-        characteristics,
-    } = productData
+  const {
+    id,
+    name,
+    price,
+    identifiers,
+    featuredImageUrl,
+    characteristics,
+  } = productData;
 
-    // Set product code, default: uid
-    const productCode = (config.productCode in identifiers) ? identifiers[config.productCode] : id
+  // Set which identifier is to be used for the product code, default: uid
+  const productCodeIdentifierMapping = (config.productCodeIdentifierMapping in identifiers) ?
+    identifiers[config.productCodeIdentifierMapping] : id;
 
-    let productVariants = []
+  // TODO: options options still need to be added
+  const productVariants = characteristics ?
+    Object.keys(characteristics).forEach((key) => {
+      productVariants.push({
+        code: String(characteristics[key].id),
+        name: characteristics[key].name,
+        value: {
+          code: String(characteristics[key].id),
+          name: characteristics[key].value,
+        },
+      });
+    }) : [];
 
-    if (characteristics) {
-        Object.keys(characteristics).forEach(key => {
-            productVariants.push(
-            {
-                code: String(characteristics[key].id),
-                name: characteristics[key].name,
-                value: {
-                    code: String(characteristics[key].id),
-                    name: characteristics[key].value
-                }
-            }
-            );
-        })
-    }
-
-    return {
-        code: String(productCode),
-        name: name,
-        options: productVariants,
-        quantity: 1,
-        imageUrl: featuredImageUrl,
-        price: price.unitPrice,
-        currencyCode: price.currency,
-        identifiers: identifiers,
-    }
+  return {
+    code: String(productCodeIdentifierMapping),
+    name,
+    options: productVariants,
+    quantity: 1,
+    imageUrl: featuredImageUrl,
+    price: price.unitPrice,
+    currencyCode: price.currency,
+    identifiers,
+  };
 };
