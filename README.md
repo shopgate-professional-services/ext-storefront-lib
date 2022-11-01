@@ -51,11 +51,11 @@ Adds the Storefront library to the shopping app.
         "reserve.submit": "Reserve Now",
         "reserveButton.title": "Reserve in Store"
       },
-      "es": null,
-      "fr": null,
-      "it": null,
-      "nl": null,
-      "pt": null
+      "es": {},
+      "fr": {},
+      "it": {},
+      "nl": {},
+      "pt": {}
     },
     "inventory": {
       "hideNumber": false,
