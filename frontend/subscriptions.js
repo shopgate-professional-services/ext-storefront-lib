@@ -1,12 +1,12 @@
 import { appDidStart$ } from '@shopgate/engage/core';
 import { variantDidChange$ } from '@shopgate/pwa-common-commerce/product/streams';
+import { productIsReady$ } from '@shopgate/pwa-tracking/streams/product';
 import {
   userDataReceived$,
   userDidLogout$,
   getUserData,
 } from '@shopgate/engage/user';
 import { getProductFormated } from './selectors';
-import { productIsReady$ } from '../../../libraries/tracking/streams/product';
 import getRetailRed from './retailRedStorefront';
 
 export default (subscribe) => {
