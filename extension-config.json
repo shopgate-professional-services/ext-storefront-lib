@@ -1,6 +1,6 @@
 {
   "id": "@shopgate-project/storefront-lib",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.5",
   "components": [
     {
       "id": "Subscribers",
@@ -26,13 +26,13 @@
         "unitSystem": "metric",
         "localization": {
           "countries": ["de"],
-          "de": null,
-          "en": null,
-          "es": null,
-          "fr": null,
-          "it": null,
-          "nl": null,
-          "pt": null
+          "de": {},
+          "en": {},
+          "es": {},
+          "fr": {},
+          "it": {},
+          "nl": {},
+          "pt": {}
         },
         "inventory": {
           "hideNumber": false,
