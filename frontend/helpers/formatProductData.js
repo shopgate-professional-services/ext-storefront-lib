@@ -25,8 +25,10 @@ export const formatProductData = (productData) => {
   const productCodeIdentifierMapping = (config.productCodeIdentifierMapping in identifiers) ?
     identifiers[config.productCodeIdentifierMapping] : id;
 
+  const productVariants = [];
+
   // TODO: options options still need to be added
-  const productVariants = characteristics ?
+  if (characteristics) {
     Object.keys(characteristics).forEach((key) => {
       productVariants.push({
         code: String(characteristics[key].id),
@@ -36,7 +38,8 @@ export const formatProductData = (productData) => {
           name: characteristics[key].value,
         },
       });
-    }) : [];
+    });
+  }
 
   return {
     code: String(productCodeIdentifierMapping),

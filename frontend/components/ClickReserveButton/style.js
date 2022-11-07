@@ -20,6 +20,10 @@ css.global('#rr-omni #rr-omni-custom, #rr-omni-reserve-button, #rr-inventory-cus
 });
 
 // Custom Styling
+css.global('div.rr-modal-base', {
+  paddingTop: isIOS ? 'calc(1.25rem + var(--safe-area-inset-top)) !important' : '',
+});
+
 css.global('#rr-omni #rr-omni-custom .rr-button', {
   textTransform: 'none',
   fontSize: '16px',
@@ -53,7 +57,7 @@ css.global('#rr-dropin #rr-inventory-custom #rr-inventory #rr-inventory-reserve'
   borderRadius,
 });
 
-css.global('#rr-dropin #rr-inventory-custom #rr-inventory .rr-inventory-postalsearch .rr-button' , {
+css.global('#rr-dropin #rr-inventory-custom #rr-inventory .rr-inventory-postalsearch .rr-button', {
   textTransform: 'none',
   fontSize: '14px',
   fontWeight: 700,
