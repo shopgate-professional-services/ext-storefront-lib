@@ -19,7 +19,7 @@
       "type": "admin",
       "destination": "frontend",
       "default": {
-        "apiKey": "pEzhhu8vEqpH5r9w3atEcRY5",
+        "apiKey": "",
         "apiStage": "staging",
         "useGeolocationImmediately": true,
         "saveCustomerData": "on",
