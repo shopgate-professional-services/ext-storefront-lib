@@ -1,6 +1,6 @@
 {
   "id": "@shopgate-project/storefront-lib",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0-beta.7",
   "components": [
     {
       "id": "Subscribers",
@@ -39,11 +39,11 @@
           "showExactUntil": null,
           "showLowUntil": 5
         },
-        "productCodeIdentifierMapping": null,
+        "productCodeIdentifierMapping": "sku",
         "termsLink": null,
         "privacyLink": null,
-        "renderLiveInventory": false,
-        "renderLiveInventoryMode": "list",
+        "renderLiveInventory": true,
+        "renderLiveInventoryMode": "modal",
         "newsletterOptIn": "disabled"
       },
       "params": {
