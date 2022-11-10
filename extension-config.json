@@ -1,0 +1,55 @@
+{
+  "id": "@shopgate-project/storefront-lib",
+  "version": "1.0.0",
+  "components": [
+    {
+      "id": "Subscribers",
+      "path": "frontend/subscriptions.js",
+      "type": "subscribers"
+    },
+    {
+      "id": "ClickReserveButton",
+      "path": "frontend/components/ClickReserveButton",
+      "target": "product.description.before",
+      "type": "portals"
+    }
+  ],
+  "configuration": {
+    "config": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "apiKey": "",
+        "apiStage": "staging",
+        "useGeolocationImmediately": true,
+        "saveCustomerData": "on",
+        "unitSystem": "metric",
+        "localization": {
+          "countries": ["de"],
+          "de": {},
+          "en": {},
+          "es": {},
+          "fr": {},
+          "it": {},
+          "nl": {},
+          "pt": {}
+        },
+        "inventory": {
+          "hideNumber": false,
+          "showExactUntil": null,
+          "showLowUntil": 5
+        },
+        "productCodeIdentifierMapping": null,
+        "termsLink": null,
+        "privacyLink": null,
+        "renderLiveInventory": true,
+        "renderLiveInventoryMode": "modal",
+        "newsletterOptIn": "disabled"
+      },
+      "params": {
+        "label": "Storefront configuration",
+        "type": "json"
+      }
+    }
+  }
+}

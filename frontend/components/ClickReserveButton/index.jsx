@@ -1,0 +1,74 @@
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import connect from './connector';
+import getRetailred from '../../retailRedStorefront';
+import getConfig from '../../helpers/getConfig';
+import styles from './style';
+
+const { config } = getConfig();
+
+/**
+ * Checks if all selections have been made.
+ * @param {Object} variants The data of the received product variants.
+ * @param {Object} props The component props.
+ * @returns {boolean}
+ */
+const checkSelection = (variants, props) => {
+  const { characteristics } = variants;
+  const { variantId } = props;
+
+  if (characteristics) {
+    const filteredValues = Object.keys(characteristics).filter(key => !!characteristics[key]);
+    return !!((filteredValues.length === variants.characteristics.length) && variantId);
+  }
+
+  return false;
+};
+
+/**
+ * ClickReserveButton component
+ * @returns {JSX}
+ */
+const ClickReserveButton = ({ isOrderable, variants, ...props }) => {
+  useEffect(() => {
+    // Render reserveButton or liveInventory template
+    if (config.renderLiveInventory) {
+      getRetailred().renderLiveInventory('#rr-dropin', { variant: config.renderLiveInventoryMode });
+    } else {
+      getRetailred().renderReserveButton('#rr-dropin');
+    }
+  }, []);
+
+  // Orderable and variant selection is made
+  const isReservable = Object.keys(variants).length > 0 ?
+    (isOrderable && checkSelection(variants, props)) : isOrderable;
+
+  return (
+    (isReservable) ? (
+      <div className={styles.container}>
+        <div>
+          <div id="rr-dropin" />
+        </div>
+      </div>
+    ) : (
+      <div className={styles.container}>
+        <div className={config.renderLiveInventory ?
+          styles.selectStoreInactive : styles.reserveButtonInactive}
+        >
+          <div id="rr-dropin" />
+        </div>
+      </div>
+    )
+  );
+};
+
+ClickReserveButton.propTypes = {
+  variants: PropTypes.shape({}).isRequired,
+  isOrderable: PropTypes.bool,
+};
+
+ClickReserveButton.defaultProps = {
+  isOrderable: true,
+};
+
+export default connect(ClickReserveButton);
