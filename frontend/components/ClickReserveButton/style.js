@@ -21,7 +21,7 @@ css.global('#rr-omni #rr-omni-custom, #rr-omni-reserve-button, #rr-inventory-cus
 
 // Custom Styling
 css.global('div.rr-modal-base', {
-  paddingTop: isIOS ? 'calc(1.25rem + var(--safe-area-inset-top)) !important' : '',
+  paddingTop: 'var(--safe-area-inset-top) !important',
 });
 
 css.global('#rr-omni #rr-omni-custom .rr-button', {
